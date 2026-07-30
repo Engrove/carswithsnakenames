@@ -118,12 +118,63 @@ function initCodex() {
   });
 }
 
+/* ------------------------------------------------------------ the eyes */
+
+/**
+ * The floating eyes follow the pointer. Purely decorative, disabled outright
+ * when the visitor has asked for less motion, and skipped entirely on devices
+ * with no pointer to follow.
+ */
+function initOmenEyes() {
+  const eyes = document.querySelectorAll('[data-omen-eye]');
+  if (!eyes.length) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  let queued = false;
+  let px = 0;
+  let py = 0;
+
+  const track = () => {
+    for (const eye of eyes) {
+      const group = eye.querySelector('.pupil-group');
+      if (!group) continue;
+      const box = eye.getBoundingClientRect();
+      if (box.bottom < 0 || box.top > window.innerHeight) continue;
+
+      const dx = px - (box.left + box.width / 2);
+      const dy = py - (box.top + box.height / 2);
+      const angle = Math.atan2(dy, dx);
+      // Clamped so the pupil never leaves the sclera.
+      const reach = Math.min(7, Math.hypot(dx, dy) / 26);
+      group.setAttribute(
+        'transform',
+        `translate(${(Math.cos(angle) * reach).toFixed(2)} ${(Math.sin(angle) * reach).toFixed(2)})`,
+      );
+    }
+    queued = false;
+  };
+
+  window.addEventListener(
+    'pointermove',
+    (e) => {
+      px = e.clientX;
+      py = e.clientY;
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(track);
+    },
+    { passive: true },
+  );
+}
+
 /* ------------------------------------------------------------------ boot */
 
 const start = () => {
   initSkin();
   initProgress();
   initCodex();
+  initOmenEyes();
 };
 
 if (document.readyState === 'loading') {

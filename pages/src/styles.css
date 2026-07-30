@@ -25,6 +25,15 @@
   --accent-dim-l: 44%;
   --gold: #d8b26a;
 
+  /* Reaper layer: flame, blood and bone. Independent of --hue so the furniture
+     reads the same on every entry while the animal keeps its own colour. */
+  --ember: #ff6a1a;
+  --ember-hot: #ffc24a;
+  --blood: #e0143c;
+  --bone: #efe6d4;
+  --ash: #3a3330;
+  --omen-ink: hsl(24 80% 60% / 0.16);
+
   --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
     "Times New Roman", serif;
   --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
@@ -56,6 +65,12 @@
   --accent-dim-s: 34%;
   --accent-dim-l: 44%;
   --gold: #8a6a1f;
+  --ember: #d1440a;
+  --ember-hot: #b8790c;
+  --blood: #a80d2b;
+  --bone: #4a4034;
+  --ash: #cfc6b2;
+  --omen-ink: hsl(18 70% 40% / 0.13);
   color-scheme: light;
 }
 
@@ -75,6 +90,12 @@
     --accent-dim-s: 34%;
     --accent-dim-l: 44%;
     --gold: #8a6a1f;
+    --ember: #d1440a;
+    --ember-hot: #b8790c;
+    --blood: #a80d2b;
+    --bone: #4a4034;
+    --ash: #cfc6b2;
+    --omen-ink: hsl(18 70% 40% / 0.13);
     color-scheme: light;
   }
 }
@@ -1101,4 +1122,355 @@ main {
 @media print {
   .masthead, .colophon-foot__links, .pager, .skin-toggle, .search { display: none; }
   body { background: #fff; color: #000; }
+}
+
+/* ==========================================================================
+   THE REAPER LAYER
+   Skulls, flames and strange objects, laid over the catalogue rather than
+   through it. Everything below is decorative: delete this block and the site
+   underneath is unchanged in structure, legibility and meaning.
+   ========================================================================== */
+
+/* ------------------------------------------------------- omens (drifting) */
+
+.omens {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  contain: strict;
+}
+
+/* Outline art rather than solid silhouettes: filled shapes at low opacity
+   turned into muddy blobs, and linework is the right register anyway. */
+.omen {
+  position: absolute;
+  color: var(--ember);
+  opacity: 0;
+  animation: omen-drift 64s linear infinite;
+  animation-delay: calc(var(--i) * -11s);
+  will-change: transform, opacity;
+}
+
+.omen * {
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  /* The sprites have different viewBoxes and are sized in rem, so without this
+     each omen would end up with a different apparent line weight. */
+  vector-effect: non-scaling-stroke;
+}
+
+/* Each object gets its own lane, size and spin so the set never reads as a
+   repeating pattern. */
+.omen--scythe    { width: 12rem; height: 12rem; left: -6%;  --lane: 14vh; --spin: -18deg; --omen-max: 0.20; }
+.omen--skull     { width: 8rem;  height: 8rem;  left: 22%;  --lane: 62vh; --spin: 12deg; --omen-max: 0.26; }
+.omen--hourglass { width: 6.5rem; height: 6.5rem; left: 48%; --lane: 8vh;  --spin: 8deg; --omen-max: 0.30; }
+.omen--eye       { width: 7rem;  height: 7rem;  left: 72%;  --lane: 46vh; --spin: 0deg; --omen-max: 0.34; }
+.omen--wheel     { width: 10rem; height: 10rem; left: 88%;  --lane: 24vh; --spin: 24deg; --omen-max: 0.22; }
+.omen--bones     { width: 9rem;  height: 9rem;  left: 8%;   --lane: 78vh; --spin: -14deg; --omen-max: 0.24; }
+.omen--wisp      { width: 7.5rem; height: 7.5rem; left: 62%; --lane: 86vh; --spin: 6deg; --omen-max: 0.26; }
+.omen--reaper    { width: 11rem; height: 11rem; left: 34%;  --lane: 34vh; --spin: -6deg; --omen-max: 0.18; }
+
+@keyframes omen-drift {
+  0%   { transform: translate3d(0, calc(var(--lane) + 6vh), 0) rotate(var(--spin)) scale(0.94); opacity: 0; }
+  14%  { opacity: var(--omen-max); }
+  50%  { transform: translate3d(3vw, calc(var(--lane) - 4vh), 0) rotate(calc(var(--spin) * -1)) scale(1.04); }
+  86%  { opacity: var(--omen-max); }
+  100% { transform: translate3d(0, calc(var(--lane) + 6vh), 0) rotate(var(--spin)) scale(0.94); opacity: 0; }
+}
+
+/* A few details get extra weight so the eye finds the shape's focus. */
+.omen .socket,
+.omen .void,
+.omen .glare,
+.omen .lick,
+.omen--eye .iris { stroke-width: 2.2; }
+
+.omen--eye .pupil-group { transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.2, 1); }
+.omen--eye .pupil { fill: currentColor !important; }
+
+.omen--wheel .lick { fill: var(--ember); opacity: 0.55; }
+.omen--wheel { animation: omen-drift 64s linear infinite, omen-spin 26s linear infinite; }
+
+@keyframes omen-spin { to { transform: rotate(360deg); } }
+
+/* The hourglass turns over, slowly, and never at a convenient moment. */
+.omen--hourglass { animation: omen-drift 64s linear infinite, omen-flip 19s ease-in-out infinite; }
+@keyframes omen-flip {
+  0%, 44%   { transform: rotate(0deg); }
+  50%, 94%  { transform: rotate(180deg); }
+  100%      { transform: rotate(360deg); }
+}
+
+/* --------------------------------------------------------------- embers */
+
+.embers {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  contain: strict;
+}
+
+.embers i {
+  position: absolute;
+  bottom: -8px;
+  left: calc(var(--i) * 7.4% + 2%);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--ember);
+  box-shadow: 0 0 7px 1px var(--ember);
+  opacity: 0;
+  animation: ember-rise 15s linear infinite;
+  animation-delay: calc(var(--i) * -1.31s);
+}
+.embers i:nth-child(3n)  { width: 2px; height: 2px; animation-duration: 21s; }
+.embers i:nth-child(4n)  { background: var(--ember-hot); box-shadow: 0 0 9px 1px var(--ember-hot); }
+.embers i:nth-child(5n)  { animation-duration: 11s; }
+
+@keyframes ember-rise {
+  0%   { transform: translate3d(0, 0, 0) scale(0.6); opacity: 0; }
+  8%   { opacity: 0.85; }
+  50%  { transform: translate3d(2.5vw, -52vh, 0) scale(1); }
+  82%  { opacity: 0.5; }
+  100% { transform: translate3d(-1.5vw, -104vh, 0) scale(0.3); opacity: 0; }
+}
+
+/* ---------------------------------------------------------- the site mark */
+
+.mark__skull { fill: var(--bone); }
+.mark__socket { fill: var(--ink-0); }
+.mark__body { stroke: var(--accent); stroke-width: 3.2; stroke-linecap: round; }
+.mark__eye { fill: var(--ember); }
+.masthead__mark:hover .mark__skull { fill: var(--ember-hot); }
+.masthead__mark:hover .mark__body { animation: shed 1.6s ease-in-out; }
+
+/* ------------------------------------------------- anime surface treatment */
+
+/* Screentone. A halftone dot field, the way a manga page gets its greys. */
+.pagehead,
+.hero,
+.notfound {
+  position: relative;
+  isolation: isolate;
+}
+.pagehead::before,
+.hero::before,
+.notfound::before {
+  content: "";
+  position: absolute;
+  inset: -1rem -2rem 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(currentColor 1px, transparent 1.2px);
+  background-size: 7px 7px;
+  color: var(--ember);
+  opacity: 0.08;
+  mask-image: linear-gradient(115deg, #000 0%, transparent 62%);
+  -webkit-mask-image: linear-gradient(115deg, #000 0%, transparent 62%);
+}
+
+/* Speed lines behind the hero. Converging on the title, as they should. */
+.hero__inner { position: relative; }
+.hero__inner::before {
+  content: "";
+  position: absolute;
+  top: -8rem;
+  left: 50%;
+  width: 150vw;
+  height: 60rem;
+  translate: -50% 0;
+  z-index: -1;
+  pointer-events: none;
+  background: repeating-conic-gradient(
+    from 0deg at 50% 42%,
+    var(--ember) 0deg 0.35deg,
+    transparent 0.35deg 3.6deg
+  );
+  opacity: 0.09;
+  mask-image: radial-gradient(closest-side, transparent 34%, #000 78%, transparent 100%);
+  -webkit-mask-image: radial-gradient(closest-side, transparent 34%, #000 78%, transparent 100%);
+  animation: speedlines 42s linear infinite;
+}
+@keyframes speedlines { to { rotate: 360deg; } }
+
+/* Impact typography: the title gets an offset ember ghost behind it. */
+.hero__title {
+  text-shadow:
+    0.055em 0.055em 0 var(--blood),
+    0.1em 0.1em 0 var(--omen-ink);
+}
+.entry__title { text-shadow: 0.03em 0.03em 0 var(--omen-ink); }
+
+/* Section headers get a flame tick. */
+.section-h::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.9rem;
+  flex: none;
+  background: linear-gradient(to top, var(--blood), var(--ember), var(--ember-hot));
+  clip-path: polygon(50% 0, 100% 55%, 82% 100%, 18% 100%, 0 55%);
+}
+
+/* Book numerals burn. */
+.book__numeral {
+  background: linear-gradient(to top, var(--blood), var(--ember) 55%, var(--ember-hot));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 1;
+}
+
+/* Cards catch fire along the leading edge rather than glowing politely. */
+.card__link::before { background: linear-gradient(to bottom, var(--ember-hot), var(--blood)); }
+.card__link:hover { box-shadow: inset 0 0 40px -18px var(--ember); }
+
+.button--primary { box-shadow: 0 0 0 0 var(--ember); transition: box-shadow 0.25s; }
+.button--primary:hover { box-shadow: 0 0 22px -6px var(--ember); }
+
+/* The progress bar is a fuse. */
+.progress__bar {
+  background: linear-gradient(90deg, var(--blood), var(--ember) 60%, var(--ember-hot));
+  box-shadow: 0 0 10px -1px var(--ember);
+}
+
+/* ------------------------------------------------------------ skull rating */
+
+.skullrate {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.skullrate__row { display: inline-flex; gap: 0.1rem; }
+.skullrate__s {
+  width: 1.05rem;
+  height: 1.05rem;
+  color: var(--line);
+  fill: currentColor;
+}
+.skullrate__s .bone { fill: currentColor; }
+.skullrate__s .socket,
+.skullrate__s .bone-dark { fill: var(--ink-1); }
+.skullrate__s.is-lit { color: var(--ember); filter: drop-shadow(0 0 3px var(--omen-ink)); }
+.skullrate b {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-faint);
+}
+.skullrate--compact .skullrate__s { width: 0.88rem; height: 0.88rem; }
+.skullrate__row { gap: 0.14rem; }
+
+/* In cards the rating takes a row of its own: nation names run to
+   "United Kingdom and Northern Eurasia", and sharing a line with them turned
+   the skulls into a vertical stack of dots. */
+.card__meta { flex-wrap: wrap; row-gap: 0.5rem; align-items: baseline; }
+.card__dread {
+  border: 0;
+  padding: 0;
+  flex: 1 0 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 0;
+}
+
+/* Codex dread bar burns instead of glowing. */
+.codex__dread .bar::after {
+  background: linear-gradient(90deg, var(--blood), var(--ember) 70%, var(--ember-hot));
+}
+
+/* ------------------------------------------------------------- flame rule */
+
+.flamerule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin: 3.4rem 0;
+  color: var(--line);
+}
+.flamerule::before,
+.flamerule::after {
+  content: "";
+  flex: 1;
+  max-width: 14rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line));
+}
+.flamerule::after { background: linear-gradient(90deg, var(--line), transparent); }
+.flamerule__f {
+  width: 1.1rem;
+  height: 1.65rem;
+  flex: none;
+}
+.flamerule__f .flame-outer { fill: var(--ember); opacity: 0.85; }
+.flamerule__f .flame-inner { fill: var(--ember-hot); }
+
+/* --------------------------------------------------------- verse and venom */
+
+/* The verse block gets a burning left rule. */
+.verse { border-left-color: transparent; position: relative; }
+.verse::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 -2px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--ember-hot), var(--blood) 60%, transparent);
+}
+
+.venom__index b { text-shadow: 0 0 14px var(--omen-ink); }
+
+/* The provenance labels keep their meaning — only liturgical picks up flame,
+   because that is the one that is made up. */
+.tag--liturgical { color: var(--ember); }
+
+/* ------------------------------------------------------------- copyright */
+
+.rolf {
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ember);
+}
+
+/* ------------------------------------------------------- reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .omen,
+  .omen--wheel,
+  .omen--hourglass,
+  .embers i,
+  .hero__inner::before {
+    animation: none !important;
+  }
+  .omen { opacity: var(--omen-max); transform: rotate(var(--spin)); }
+  .embers { display: none; }
+  .omen--eye .pupil-group { transition: none; }
+}
+
+/* Small screens do not need eight floating objects competing with the text. */
+@media (max-width: 60rem) {
+  .omen--skull,
+  .omen--bones,
+  .omen--wisp,
+  .omen--reaper { display: none; }
+  .omen { --omen-max: 0.16; }
+}
+
+@media print {
+  .omens, .embers, .flamerule { display: none; }
+  .hero__title, .entry__title { text-shadow: none; }
+}
+
+.venom__skulls {
+  margin: 0;
+  padding: 0 1rem 0.85rem;
+  border-top: 0;
 }

@@ -63,6 +63,49 @@ export const GLYPH_W = 5;
 export const GLYPH_H = 7;
 
 /**
+ * A pixel skull, stamped on every generated plate the way a specimen jar gets
+ * a hazard label. Drawn with the sockets widening outward at the top and
+ * pinching inward at the bottom, which is the whole trick to an angry face.
+ */
+export const SKULL = [
+  '....#####....',
+  '..#########..',
+  '.###########.',
+  '#############',
+  '#...#####...#',
+  '#....###....#',
+  '##...###...##',
+  '###..###..###',
+  '#####.#.#####',
+  '#####...#####',
+  '.###########.',
+  '..#.#.#.#.#..',
+  '..#########..',
+];
+
+/** Blend a string-bitmap sprite into an RGB buffer at integer scale. */
+export function drawSprite(buf, bufW, bufH, rows, x, y, scale, rgb, alpha = 1) {
+  for (let ry = 0; ry < rows.length; ry++) {
+    const row = rows[ry];
+    for (let rx = 0; rx < row.length; rx++) {
+      if (row[rx] !== '#') continue;
+      for (let sy = 0; sy < scale; sy++) {
+        const py = y + ry * scale + sy;
+        if (py < 0 || py >= bufH) continue;
+        for (let sx = 0; sx < scale; sx++) {
+          const px = x + rx * scale + sx;
+          if (px < 0 || px >= bufW) continue;
+          const i = (py * bufW + px) * 3;
+          buf[i] += (rgb[0] - buf[i]) * alpha;
+          buf[i + 1] += (rgb[1] - buf[i + 1]) * alpha;
+          buf[i + 2] += (rgb[2] - buf[i + 2]) * alpha;
+        }
+      }
+    }
+  }
+}
+
+/**
  * Fold accented Latin down to the ASCII the font actually has, so Swedish and
  * Italian entry names do not turn into a row of blanks.
  */
