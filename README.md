@@ -113,9 +113,38 @@ corpus automatically.
   claim flattened with its label
 - `/sitemap.xml`, `/feed.xml`, `/feed.json`
 
-## Licence
+## The reaper layer
 
-Text and code released into the public domain (Unlicense). Marque and model
-names belong to their respective owners and appear here for identification,
-commentary and criticism. This site is not affiliated with any manufacturer
-named in it.
+The catalogue was built first; the Grim Reaper arrived over the top of it.
+Skulls, flames and eight drifting objects — scythe, hourglass, wheel of fire,
+crossbones, wisp, cowled figure, and a pair of eyes that follow the cursor —
+live in `site/templates/reaper.mjs` and the final block of
+`pages/src/styles.css`.
+
+The whole layer is decorative and strictly additive:
+
+- rendered as an SVG `<symbol>` sheet, referenced once per omen by `<use>`
+- `aria-hidden`, `pointer-events: none`, behind all content
+- animated only with `transform` and `opacity`
+- completely still under `prefers-reduced-motion`, embers removed entirely
+- the four largest omens are dropped below 60rem
+
+Deleting the `THE REAPER LAYER` block from the stylesheet leaves the field
+guide underneath unchanged in structure, legibility and meaning.
+
+The generated plates carry it too: a warm fire wash rising from the bottom
+edge, ~130 deterministic embers, and a pixel skull stamped in the corner as a
+hazard mark.
+
+## Copyright
+
+© 2026 **ROLF**. All rights reserved.
+
+Quotation with attribution is welcome; wholesale reproduction is not. Marque
+and model names belong to their respective owners and appear here for
+identification, commentary and criticism. This site is not affiliated with any
+manufacturer named in it.
+
+> Note: the repository still contains an `LICENSE` file carrying the Unlicense
+> (public domain) from the initial commit. That contradicts the copyright
+> notice now shown on the site — replace or remove it to match your intent.

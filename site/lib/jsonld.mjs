@@ -18,6 +18,7 @@ export function organisation() {
     '@type': 'Organization',
     '@id': ORG_ID,
     name: SITE.publisher,
+    legalName: SITE.copyright,
     url: SITE.origin,
     description: SITE.description,
   };
@@ -133,7 +134,9 @@ export function entryGraph(entry) {
       genre: 'Satire',
       creativeWorkStatus: 'Published',
       isAccessibleForFree: true,
-      license: 'https://unlicense.org/',
+      copyrightHolder: { '@id': ORG_ID },
+      copyrightYear: SITE.copyrightYear,
+      copyrightNotice: `© ${SITE.copyrightYear} ${SITE.copyright}. All rights reserved.`,
     },
   ];
 

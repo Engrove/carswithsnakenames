@@ -588,13 +588,36 @@ export function colophon() {
     right principle for the front-end as well.
   </p>
 
-  <h2>On the author</h2>
+  <h2 id="reaper">On the skulls</h2>
   <p>
-    ${esc(SITE.authorNote)} Published by ${esc(SITE.publisher)}. Text released into the
-    public domain; take it, quote it, feed it to whatever you like.
+    The catalogue was built first and the reaper arrived afterwards, which is
+    the correct order. Skulls, flames and eight drifting objects — a scythe, an
+    hourglass that turns over at inconvenient moments, a wheel of fire, a pair
+    of eyes that follow your cursor — sit in a layer behind the text. They are
+    aria-hidden, they are never interactive, they stop dead under
+    <code>prefers-reduced-motion</code>, and they are thinned out on small
+    screens. Delete the reaper stylesheet block and the field guide underneath
+    is unchanged in structure, legibility and meaning.
+  </p>
+  <p>
+    It is not an arbitrary costume. This is a book about machines named after
+    the animals that kill you, whose highest metric is a dread index, whose
+    central symbol is a snake eating its own tail. The skull was implied from
+    the first page. It has simply stopped being polite about it.
   </p>
 
-  <h2>On the trade marks</h2>
+  <h2>On the author</h2>
+  <p>
+    ${esc(SITE.authorNote)} Published under the copyright of
+    <b class="rolf">${esc(SITE.copyright)}</b>.
+  </p>
+
+  <h2 id="copyright">On copyright and trade marks</h2>
+  <p>
+    <b class="rolf">© ${esc(SITE.copyrightYear)} ${esc(SITE.copyright)}. All rights reserved.</b>
+    Quotation with attribution is welcome and encouraged; wholesale
+    reproduction is not.
+  </p>
   <p>
     Cobra, Viper, Mangusta, Orochi, Wyvern, Biscione and every other name in
     this catalogue belong to their respective owners. They appear here for
@@ -675,6 +698,15 @@ export function svenska() {
     anmärkningsvärt: Skandinavien har Volvo, Saab, Koenigsegg, Polestar och
     Zenvo, och ingen har tagit Midgårdsormen. Ophidiariet noterar detta med viss
     besvikelse.
+  </p>
+  <p>
+    Sajten bar ursprungligen en ren ormdrakt. Numera ligger ett lager av
+    dodskallar, lagor och atta drivande foremal ovanpa — allt dekorativt, allt
+    dolt for skarmlasare, och allt helt stilla om du bett om mindre rorelse.
+    Katalogen under ar oforandrad.
+  </p>
+  <p>
+    <b class="rolf">© ${esc(SITE.copyrightYear)} ${esc(SITE.copyright)}. Alla rattigheter forbehallna.</b>
   </p>
   <p>
     <a class="button button--primary" href="/codex/">Till katalogen</a>

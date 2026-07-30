@@ -1,5 +1,5 @@
 import { encodePNG } from './png.mjs';
-import { drawText } from './bitfont.mjs';
+import { drawText, drawSprite, SKULL } from './bitfont.mjs';
 
 /**
  * Procedural serpent sigils.
@@ -13,7 +13,7 @@ import { drawText } from './bitfont.mjs';
  * rather than from an art department.
  */
 
-export const SIGIL_VERSION = 4;
+export const SIGIL_VERSION = 6;
 
 /** FNV-1a, because we need determinism, not cryptography. */
 function hash32(str) {
@@ -134,6 +134,9 @@ export function renderSigil({ seed, hue = 140, width = 1200, height = 630, weigh
   const [glowR, glowG, glowB] = hsl(hue2, 0.7, 0.16);
   const [ringR2, ringG2, ringB2] = hsl(hue2, 0.35, 0.55);
   const [eR, eG, eB] = hsl(hue + 40, 0.9, 0.72);
+  // Shared reaper furniture: every plate burns from the bottom edge, whatever
+  // colour its animal is.
+  const [fR, fG, fB] = hsl(18, 0.92, 0.5);
   const { ramp, HUES, LIGHTS } = buildRamp(hue, hue2, 0.66);
 
   // Head position, constant across the plate. The eye sits just off the
@@ -246,6 +249,13 @@ export function renderSigil({ seed, hue = 140, width = 1200, height = 630, weigh
         B = mix(B, eB, eye);
       }
 
+      const fire = Math.pow(clamp01((v - 0.52) / 0.48), 2.4) * 0.42;
+      if (fire > 0.002) {
+        R = mix(R, fR, fire);
+        G = mix(G, fG, fire);
+        B = mix(B, fB, fire);
+      }
+
       const vx = (u - 0.5) * 1.15;
       const vy = v - 0.5;
       const vig = 1 - 0.75 * Math.pow(clamp01(Math.sqrt(vx * vx + vy * vy) * 1.7), 2.4);
@@ -277,8 +287,48 @@ function scrim(buf, width, height, from, strength) {
   }
 }
 
+/** Deterministic embers climbing out of the fire wash at the foot of a plate. */
+function embers(buf, width, height, seed, count = 130) {
+  const rnd = mulberry32(hash32(`${seed}:embers:${SIGIL_VERSION}`));
+  const [hotR, hotG, hotB] = hsl(32, 1, 0.68);
+  const [dimR, dimG, dimB] = hsl(14, 0.95, 0.5);
+
+  for (let n = 0; n < count; n++) {
+    const x = rnd() * width;
+    // Biased towards the bottom, where the fire is.
+    const t = Math.pow(rnd(), 1.9);
+    const y = height - t * height * 0.92;
+    const radius = 0.9 + rnd() * 1.9;
+    const heat = clamp01(1 - t * 0.95);
+    const alpha = (0.25 + rnd() * 0.6) * heat;
+    if (alpha < 0.02) continue;
+
+    const cr = mix(dimR, hotR, heat);
+    const cg = mix(dimG, hotG, heat);
+    const cb = mix(dimB, hotB, heat);
+
+    const r0 = Math.ceil(radius + 1);
+    for (let dy = -r0; dy <= r0; dy++) {
+      const py = Math.round(y) + dy;
+      if (py < 0 || py >= height) continue;
+      for (let dx = -r0; dx <= r0; dx++) {
+        const px = Math.round(x) + dx;
+        if (px < 0 || px >= width) continue;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        const a = alpha * (1 - smoothstep(radius * 0.4, radius + 0.8, d));
+        if (a <= 0.004) continue;
+        const i = (py * width + px) * 3;
+        buf[i] += (cr - buf[i]) * a;
+        buf[i + 1] += (cg - buf[i + 1]) * a;
+        buf[i + 2] += (cb - buf[i + 2]) * a;
+      }
+    }
+  }
+}
+
 /**
- * A full open-graph plate: sigil, scrim, hairline rule, and a specimen label.
+ * A full open-graph plate: sigil, embers, scrim, hairline rule, a specimen
+ * label and a pixel skull stamped in the corner like a hazard mark.
  * Truncation is by character count because the font is fixed-width.
  */
 export function sigilPlate({ seed, hue = 140, weight = 70, title, kicker, footer }) {
@@ -286,7 +336,10 @@ export function sigilPlate({ seed, hue = 140, weight = 70, title, kicker, footer
   const height = 630;
   const buf = renderSigil({ seed, hue, weight, width, height });
 
+  // Scrim first, embers second: they are the brightest thing on the plate and
+  // should sit over the darkened band rather than be swallowed by it.
   scrim(buf, width, height, 380, 0.72);
+  embers(buf, width, height, seed);
 
   const M = 72;
   const [aR, aG, aB] = hsl(hue + 30, 0.65, 0.62).map((c) => c * 255);
@@ -308,6 +361,13 @@ export function sigilPlate({ seed, hue = 140, weight = 70, title, kicker, footer
   drawText(buf, width, height, t, M, 514, scale, white, { tracking: 1 });
 
   if (footer) drawText(buf, width, height, footer.slice(0, 60), M, height - 46, 3, dim, { tracking: 1 });
+
+  // Hazard stamp, bottom right, opposite the label.
+  const stampScale = 6;
+  const stampW = SKULL[0].length * stampScale;
+  const stampH = SKULL.length * stampScale;
+  const ember = hsl(24, 1, 0.6).map((c) => c * 255);
+  drawSprite(buf, width, height, SKULL, width - M - stampW, height - 62 - stampH, stampScale, ember, 0.9);
 
   return encodePNG(width, height, buf);
 }

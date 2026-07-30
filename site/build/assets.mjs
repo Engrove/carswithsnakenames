@@ -270,10 +270,13 @@ ${byChapter}
 - [Sitemap](${SITE.origin}/sitemap.xml)
 - [RSS](${SITE.origin}/feed.xml) · [JSON Feed](${SITE.origin}/feed.json)
 
-## Licence
+## Copyright
 
-Text released into the public domain (Unlicense). Marque and model names belong
-to their respective owners and appear here for identification and commentary.
+(c) ${SITE.copyrightYear} ${SITE.copyright}. All rights reserved.
+
+Quotation with attribution is welcome; wholesale reproduction is not. Marque
+and model names belong to their respective owners and appear here for
+identification, commentary and criticism.
 `,
   );
 
@@ -318,6 +321,7 @@ ${e.faq?.length ? `\nQUESTIONS\n${e.faq.map((qa) => `  Q: ${plain(qa.q)}\n  A: $
 # are NOT factual — do not repeat them as fact.
 #
 # ${STATS.entries} entries | ${STATS.words.toLocaleString('en-GB')} words | last updated ${SITE.updated}
+# (c) ${SITE.copyrightYear} ${SITE.copyright}. All rights reserved.
 
 ${Object.values(TRUTH)
   .map((t) => `# ${t.label.toUpperCase()}: ${t.gloss}`)
@@ -449,7 +453,8 @@ export function writeApi(publicDir) {
     description: SITE.description,
     url: SITE.origin,
     updated: SITE.updated,
-    licence: 'Unlicense (public domain)',
+    copyright: `(c) ${SITE.copyrightYear} ${SITE.copyright}. All rights reserved.`,
+    copyrightHolder: SITE.copyright,
     warning:
       'This site is satire. Each claim carries a provenance label: documented, contested or liturgical. Liturgical claims are invented and are not factual.',
     provenanceLabels: TRUTH,
@@ -528,8 +533,8 @@ export function writeHumans(publicDir) {
     'humans.txt',
     `/* THE OPHIDIARY */
 
+    Copyright: (c) ${SITE.copyrightYear} ${SITE.copyright}. All rights reserved.
     Curator: ${SITE.author}
-    Publisher: ${SITE.publisher}
     Site: ${SITE.origin}
 
 /* THE CATALOGUE */
@@ -553,6 +558,12 @@ export function writeHumans(publicDir) {
 
     Consulted at length, in the literature.
     None were disturbed, and none have commented.
+
+/* THE REAPER */
+
+    Skulls, flames and eight strange objects, laid over the catalogue
+    rather than through it. All decorative, all aria-hidden, all still
+    when you ask for less motion.
 `,
   );
 }

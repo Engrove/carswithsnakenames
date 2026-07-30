@@ -1,5 +1,6 @@
 import { TRUTH, CHAPTER_BY_ID } from '../data/site.mjs';
 import { esc, typo, plain, truncate } from '../lib/html.mjs';
+import { skullRating, flameRule } from './reaper.mjs';
 
 const AXES = [
   ['bite', 'Bite', 'Violence immediately available'],
@@ -73,6 +74,7 @@ export function venomChart(entry) {
       ).join('\n      ')}
     </dl>
     <p class="venom__index"><span>Dread index</span> <b>${entry.dread}</b><small>/100</small></p>
+    <p class="venom__skulls">${skullRating(entry.dread)}</p>
   </figcaption>
 </figure>`;
 }
@@ -138,7 +140,7 @@ export function entryCard(entry, { compact = false } = {}) {
     <span class="card__meta">
       <span>${esc(entry.years)}</span>
       ${entry.nation ? `<span>${esc(entry.nation)}</span>` : ''}
-      <span class="card__dread" title="Dread index">${entry.dread}</span>
+      <span class="card__dread">${skullRating(entry.dread, { compact: true })}</span>
     </span>
   </a>
 </li>`;
@@ -152,7 +154,8 @@ export function entryGrid(entries, opts) {
 
 export function verseBlock(entry) {
   if (!entry.verse?.length) return '';
-  return `<blockquote class="verse">
+  return `${flameRule()}
+<blockquote class="verse">
   ${entry.verse.map((line) => `<span class="verse__line">${typo(line)}</span>`).join('\n  ')}
 </blockquote>`;
 }

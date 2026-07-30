@@ -1,6 +1,7 @@
 import { SITE, NAV } from '../data/site.mjs';
 import { esc, escJson, truncate, join } from '../lib/html.mjs';
 import { graph, organisation, author, website } from '../lib/jsonld.mjs';
+import { reaperSprites, reaperMark, omenLayer, emberField } from './reaper.mjs';
 
 const abs = (path) => (path.startsWith('http') ? path : `${SITE.origin}${path}`);
 
@@ -114,14 +115,14 @@ ${noindex ? '<meta name="robots" content="noindex, follow">' : '<meta name="robo
 </head>
 <body class="${esc(bodyClass)}">
 <a class="skip" href="#main">Skip to the text</a>
+${reaperSprites()}
+${omenLayer(url)}
+${emberField()}
 
 <header class="masthead">
   <div class="masthead__inner">
     <a class="masthead__mark" href="/" aria-label="${esc(SITE.name)} — home">
-      <svg class="mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
-        <path class="mark__body" d="M24 44c-9 0-16-6.6-16-15S15 14 24 14s13 4.4 13 10-4.6 8.6-9.6 8.6S19 29.4 19 26.2s2.4-5 5-5 4 1.6 4 3.4"/>
-        <circle class="mark__eye" cx="30.4" cy="24" r="1.9"/>
-      </svg>
+      ${reaperMark()}
       <span class="masthead__words">
         <span class="masthead__title">Cars With Snake&nbsp;Names</span>
         <span class="masthead__sub">The Ophidiary</span>
@@ -159,10 +160,11 @@ ${body}
       <a href="/feed.xml">RSS</a>
     </nav>
     <p class="colophon-foot__legal">
-      Text released into the public domain. Marque and model names are the
-      property of their owners and are used here for identification, criticism
-      and comment. No serpent was consulted during production, though several
-      were read about at length.
+      <span class="rolf">© ${esc(SITE.copyrightYear)} ${esc(SITE.copyright)}.</span>
+      All rights reserved. Marque and model names are the property of their
+      owners and are used here for identification, criticism and comment. No
+      serpent was consulted during production, though several were read about
+      at length. Nothing was reaped that was not already going.
     </p>
   </div>
 </footer>
