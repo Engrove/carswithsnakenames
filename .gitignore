@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.vite/
+.DS_Store
+*.log
+
+# Generated route HTML (written by site/build/generate.mjs into the Vite root)
+pages/**/*.html
+
+# Generated public assets (public/ is copied here, then augmented)
+public-gen/

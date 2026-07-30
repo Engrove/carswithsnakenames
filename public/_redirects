@@ -1,0 +1,26 @@
+# Vanity paths. A catalogue this pleased with itself should be easy to quote.
+/cobra              /entry/shelby-cobra/            301
+/viper              /entry/dodge-viper/             301
+/mangusta           /entry/de-tomaso-mangusta/      301
+/mongoose           /entry/de-tomaso-mangusta/      301
+/orochi             /entry/mitsuoka-orochi/         301
+/wyvern             /entry/vauxhall-wyvern/         301
+/biscione           /entry/alfa-romeo-biscione/     301
+/supersnake         /entry/shelby-cobra-super-snake/ 301
+
+# Aliases for the things people type instead of the thing that exists.
+/entries            /codex/                         301
+/index              /                               301
+/books              /chapter/                       301
+/chapters           /chapter/                       301
+/tags               /taxonomy/                      301
+/lexicon            /glossary/                      301
+/about              /colophon/                      301
+/feed               /feed.xml                       301
+/rss                /feed.xml                       301
+/sitemap            /sitemap.xml                    301
+/llms               /llms.txt                       301
+/svenska            /sv/                            301
+
+# Old-style flat entry URLs, in case anything ever links to one.
+/entry/:slug.html   /entry/:slug/                   301

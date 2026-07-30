@@ -1,0 +1,341 @@
+/**
+ * BOOK V — THE ADVERSARIES
+ * A bestiary is incomplete without its predators.
+ */
+
+export default [
+  {
+    slug: 'de-tomaso-mangusta',
+    chapter: 'adversaries',
+    marque: 'De Tomaso',
+    model: 'Mangusta',
+    name: 'De Tomaso Mangusta',
+    years: '1967–1971',
+    nation: 'Italy',
+    epithet: 'The mongoose. Named, allegedly, as an insult, and shaped like an apology for it.',
+    binomial: 'Herpestes modenensis',
+    species: 'Mongoose',
+    speciesLatin: 'Herpestidae',
+    hue: 168,
+    weight: 98,
+    lede:
+      'Mangusta is Italian for mongoose: the small, fast, faintly rabid carnivore famous for one thing, which is killing cobras. Alejandro de Tomaso built four hundred and one of them, and the reason for the name is the best story in this book.',
+    scripture: [
+      'Begin with the animal, because the animal is doing something remarkable.',
+      'A mongoose is not immune to cobra venom in the way people casually claim. Its acetylcholine receptors are shaped slightly differently, which blunts the neurotoxin\'s ability to bind — a partial resistance, not an exemption. What actually keeps a mongoose alive is speed, an erectile coat that makes it look twice its size, and a nervous system apparently unbothered by the entire situation. It wins by reflex and confidence. A large enough dose still kills it.',
+      'So the mongoose is not the cobra\'s superior. The mongoose is the cobra\'s specific, evolved, statistically favoured problem. That is a much more interesting relationship, and it is exactly the relationship the automotive world was in when this car appeared.',
+      'The legend — and the Ophidiary flags it as legend, loudly, in the provenance below — is this. Alejandro de Tomaso had been working with Carroll Shelby on a racing project. The project collapsed. De Tomaso, an Argentine of considerable temper operating out of Modena, then named his next road car the Mongoose, and every enthusiast for the following fifty-eight years has understood exactly what was meant by it.',
+      'Whether he said it out loud has never been established. It is repeated in every history of the marque. It is denied by nobody. It has the specific texture of a thing that is true in spirit and unprovable in fact, which is the texture of most of the good stories in motoring, and the Ophidiary would rather report the ambiguity than flatten it.',
+      'The car itself was drawn by Giorgetto Giugiaro at Ghia when he was in his twenties, and it is one of the most beautiful objects of the twentieth century. Long, flat, impossibly low — barely a metre and a hundred millimetres tall — with two gullwing panels over the engine and luggage bay that open like a beetle preparing to fly. A Ford V8 sat behind the driver in a steel backbone chassis.',
+      'It was also, by universal agreement, not very good. Weight distribution was somewhere around thirty-two per cent front and sixty-eight per cent rear, which is a figure normally associated with pendulums rather than cars. The chassis flexed. The brakes were optimistic. Driving one quickly required a specific negotiated understanding with the rear axle.',
+      'And so the mongoose named to insult the cobra turned out to be prettier and worse — which, if you have ever watched footage of the actual animal, is unfair to the mongoose, and which the Ophidiary suspects would have annoyed Alejandro de Tomaso considerably more than losing a race.',
+      'Four hundred and one were built. Then De Tomaso stopped fighting Shelby and built the Pantera instead, which was named after a cat, sold in far greater numbers, and settled nothing.',
+    ],
+    verse: [
+      'It is not immune.',
+      'It is merely faster than the argument.',
+      'It puffs its coat up to twice its size',
+      'and walks in',
+      'and usually — usually — walks out.',
+    ],
+    field: [
+      ['Name', 'Mangusta — Italian for mongoose'],
+      ['Design', 'Giorgetto Giugiaro at Ghia'],
+      ['Engine', 'Ford V8, mid-mounted'],
+      ['Height', 'Approximately 1,100 mm'],
+      ['Weight distribution', 'Roughly 32 / 68 front to rear'],
+      ['Built', '401'],
+      ['Engine covers', 'Twin gullwing'],
+    ],
+    venom: { bite: 72, patience: 30, mystique: 100, iridescence: 100, candour: 88 },
+    provenance: [
+      { claim: 'Mangusta is Italian for mongoose.', truth: 'documented' },
+      {
+        claim: 'De Tomaso named the car as a deliberate jab at Carroll Shelby after a collapsed collaboration.',
+        truth: 'contested',
+        note: 'Repeated in essentially every account of the marque, sourced to none of them. The Ophidiary believes it and cannot prove it.',
+      },
+      { claim: 'The Mangusta was styled by Giorgetto Giugiaro at Ghia and 401 were built.', truth: 'documented' },
+      {
+        claim: 'Mongooses have modified acetylcholine receptors that reduce, but do not eliminate, the effect of elapid neurotoxins.',
+        truth: 'documented',
+      },
+      {
+        claim: 'Mongooses are immune to snake venom.',
+        truth: 'contested',
+        note: 'A popular overstatement. Resistance is partial and dose-dependent. Plenty of mongooses lose.',
+      },
+    ],
+    faq: [
+      {
+        q: 'Why is the De Tomaso Mangusta called the Mangusta?',
+        a: 'Mangusta is Italian for mongoose — the animal best known for killing cobras. The widely repeated explanation is that Alejandro de Tomaso chose it as a swipe at Carroll Shelby, whose Cobra was then the reigning American sports car, following a failed collaboration between them. The story is universally told and has never been formally documented.',
+      },
+      {
+        q: 'Are mongooses immune to cobra venom?',
+        a: 'Not immune — resistant. Mongoose acetylcholine receptors are structurally modified so that elapid neurotoxins bind less effectively, but the resistance is partial. Their real advantage is speed, agility and a thick erectile coat.',
+      },
+      {
+        q: 'How many De Tomaso Mangustas were built?',
+        a: '401, between 1967 and 1971. It was replaced by the Pantera, which was built in far greater numbers and sold in the United States through Lincoln-Mercury dealers.',
+      },
+    ],
+    related: ['shelby-cobra', 'snake-and-mongoose', 'de-tomaso-pantera', 'dodge-viper'],
+    tags: ['adversary', 'italian', 'v8', 'coupe', 'mid-engine', 'production', 'foundational', 'rare'],
+  },
+
+  {
+    slug: 'snake-and-mongoose',
+    chapter: 'adversaries',
+    marque: 'Plymouth',
+    model: 'Funny Cars — Snake vs Mongoose',
+    name: 'The Snake and the Mongoose',
+    years: '1970–1972 (and after)',
+    nation: 'United States',
+    epithet: 'Two drag racers invented a rivalry, sold it to a toy company, and changed how sport is funded',
+    binomial: 'Herpestes vs Naja, in fibreglass',
+    species: 'Both. Simultaneously. On purpose.',
+    speciesLatin: 'Naja / Herpestidae',
+    hue: 40,
+    weight: 90,
+    lede:
+      'Don Prudhomme was called the Snake. Tom McEwen called himself the Mongoose specifically so there would be someone for the Snake to fight. Then McEwen took the idea to Mattel, and drag racing was never underfunded again.',
+    scripture: [
+      'This is the only entry in the Ophidiary where the serpent and its predator were the same business.',
+      'Don Prudhomme raced with an economy of motion that got him the nickname Snake early — he was fast off the line and gave nothing away. Tom McEwen was a decent racer and an exceptional thinker, and he understood something that the rest of the sport did not: that nobody buys a ticket to watch a fast car. They buy a ticket to watch a fight.',
+      'So McEwen named himself the Mongoose. Not because of anything he did on the strip. Because the mongoose kills the snake, and because a sport with two names in it is a story, and a story can be sold.',
+      'He then took that story to Mattel — a toy company with a die-cast car line called Hot Wheels — and proposed something that had essentially not been done before at that scale: a corporate sponsor from outside the automotive industry funding a racing team, in exchange for the team being the product. In 1970 the Snake and the Mongoose ran matched funny cars in Hot Wheels livery, and Mattel sold the pair in a twin-pack with a length of orange track, and children who had never been to a drag strip knew exactly who was who and which one they were supposed to want to win.',
+      'What McEwen had invented, in essence, was modern sports sponsorship. Every football shirt with a betting company on it descends, distantly and without acknowledgement, from a man deciding to call himself after a small carnivore in order to give a friend an enemy.',
+      'The rivalry was mostly manufactured and the friendship was entirely real. The story\'s final act is well known and the Ophidiary tells it without embellishment: in 1978 McEwen\'s son Jamie died of leukaemia at fourteen; McEwen raced days later at Indianapolis and won the final, with Prudhomme in the other lane.',
+      'Snake and mongoose. A relationship in which two animals are permanently defined by each other, and neither one is complete alone.',
+    ],
+    verse: [
+      'One of them was fast.',
+      'One of them was clever.',
+      'They sold the two of us against each other',
+      'in a cardboard box',
+      'with a length of orange track.',
+    ],
+    field: [
+      ['The Snake', 'Don Prudhomme'],
+      ['The Mongoose', 'Tom McEwen — self-appointed, for narrative reasons'],
+      ['Sponsor', 'Mattel / Hot Wheels, from 1970'],
+      ['Product', 'Twin-pack die-cast funny cars with track'],
+      ['Innovation', 'Non-endemic corporate sponsorship of a racing team'],
+    ],
+    venom: { bite: 92, patience: 12, mystique: 96, iridescence: 88, candour: 60 },
+    provenance: [
+      {
+        claim: 'Tom McEwen adopted the "Mongoose" nickname deliberately to create a rivalry with Don "the Snake" Prudhomme.',
+        truth: 'documented',
+      },
+      {
+        claim: 'McEwen brokered the Hot Wheels sponsorship of both teams, beginning in 1970.',
+        truth: 'documented',
+      },
+      {
+        claim: 'Mattel sold Snake and Mongoose funny cars as a paired set with track.',
+        truth: 'documented',
+      },
+      {
+        claim: 'McEwen won at Indianapolis in 1978 days after the death of his son, with Prudhomme in the other lane.',
+        truth: 'documented',
+      },
+    ],
+    faq: [
+      {
+        q: 'Who were the Snake and the Mongoose in drag racing?',
+        a: 'Don Prudhomme ("the Snake") and Tom McEwen ("the Mongoose"), two American funny car drivers whose staged rivalry, sponsored by Mattel\'s Hot Wheels from 1970, is widely credited with bringing large-scale outside sponsorship into motorsport.',
+      },
+      {
+        q: 'Was the Snake and Mongoose rivalry real?',
+        a: 'The competition was real; the animosity was largely constructed. McEwen invented his own nickname to create a marketable opposition, and the two men were close friends throughout.',
+      },
+    ],
+    related: ['de-tomaso-mangusta', 'shelby-cobra', 'ford-cobra-jet'],
+    tags: ['adversary', 'american', 'drag-racing', 'racing', 'cultural'],
+  },
+
+  {
+    slug: 'plymouth-road-runner',
+    chapter: 'adversaries',
+    marque: 'Plymouth',
+    model: 'Road Runner',
+    name: 'Plymouth Road Runner',
+    years: '1968–1980',
+    nation: 'United States',
+    epithet: 'Named after a cartoon, which was named after a bird, which genuinely does kill rattlesnakes',
+    binomial: 'Geococcyx plymouthii',
+    species: 'Greater roadrunner',
+    speciesLatin: 'Geococcyx californianus',
+    hue: 60,
+    weight: 74,
+    lede:
+      'Chrysler paid Warner Bros. fifty thousand dollars for the name and ten thousand more for a horn that said beep beep. The actual bird runs down rattlesnakes, beats them against rocks, and eats them.',
+    scripture: [
+      'The greater roadrunner is a ground cuckoo, and it is one of the most alarming birds in North America.',
+      'It runs at speeds around twenty-five miles per hour. It kills rattlesnakes — properly, routinely — by seizing them behind the head, and then beating them against the ground or a rock until the skull fails. Sometimes two birds work together, one distracting while the other strikes. It eats lizards, scorpions, small mammals and other birds. It has been observed killing venomous prey substantially longer than itself.',
+      'Warner Bros. built a cartoon around it in which the bird is a serene, blameless victim of a coyote\'s ingenuity, and everyone in the world under the age of eighty now believes the roadrunner is fundamentally harmless.',
+      'And this is how it entered the Ophidiary. In 1968 Plymouth wanted a cheap, fast, unadorned muscle car for buyers priced out of the GTX. It licensed the cartoon — fifty thousand dollars, plus a further sum for the right to reproduce the "beep beep" as a horn note, which Chrysler engineers duly built — put bench seats and rubber flooring in a Belvedere body, fitted a 383 as standard and made a 426 Hemi available, and sold vastly more than it expected.',
+      'So the sequence runs: a bird that beats snakes to death on rocks, becomes a cartoon that beats no one, becomes a horn, becomes a badge on the cheapest fast car in America. Four steps from predation to a decal.',
+      'The Ophidiary\'s note is simply this: of every adversary in Book V, the roadrunner is the one that actually does it. The mongoose is famous for a fight it usually wins. Apollo is a myth. The owl is opportunistic. But somewhere in the Sonoran desert, right now, a bird with a cartoon licensing history is holding a rattlesnake by the neck and swinging.',
+    ],
+    verse: [
+      'It holds the snake behind the head',
+      'and swings it at the rock',
+      'and swings it at the rock',
+      'and then it is lunch.',
+      'They made a horn out of this.',
+    ],
+    field: [
+      ['Licence fee', 'USD 50,000 to Warner Bros.'],
+      ['Horn', 'Further USD 10,000; a genuine engineering exercise'],
+      ['Standard engine', '383 cu in V8'],
+      ['Optional', '426 Hemi'],
+      ['Actual bird', 'Kills rattlesnakes by blunt force'],
+      ['Cartoon bird', 'Kills nothing; is repeatedly the victim of physics'],
+    ],
+    venom: { bite: 86, patience: 20, mystique: 74, iridescence: 70, candour: 84 },
+    provenance: [
+      {
+        claim: 'Chrysler paid Warner Bros. USD 50,000 for the Road Runner name and a further sum for the horn.',
+        truth: 'documented',
+        note: 'The figures are consistently reported at 50,000 and 10,000 respectively.',
+      },
+      {
+        claim: 'Greater roadrunners hunt and kill rattlesnakes, often by striking them against hard surfaces.',
+        truth: 'documented',
+      },
+      { claim: 'The Road Runner launched in 1968 with a 383 V8 standard and the 426 Hemi optional.', truth: 'documented' },
+    ],
+    faq: [
+      {
+        q: 'Do roadrunners really kill snakes?',
+        a: 'Yes. The greater roadrunner regularly preys on rattlesnakes, seizing them behind the head and battering them against rocks or the ground. Cooperative hunting between two birds has been documented.',
+      },
+      {
+        q: 'How much did Plymouth pay for the Road Runner name?',
+        a: 'Reported at USD 50,000 to Warner Bros. for the name and likeness, plus around USD 10,000 for the right to imitate the "beep beep" call, which Chrysler engineered into a purpose-built horn.',
+      },
+    ],
+    related: ['snake-and-mongoose', 'de-tomaso-mangusta', 'aspark-owl'],
+    tags: ['adversary', 'american', 'v8', 'coupe', 'production', 'muscle'],
+  },
+
+  {
+    slug: 'apollo-intensa-emozione',
+    chapter: 'adversaries',
+    marque: 'Apollo',
+    model: 'Intensa Emozione',
+    name: 'Apollo Intensa Emozione',
+    years: '2017–',
+    nation: 'Germany / Italy',
+    epithet: 'Named for the god who killed the Python and then took its oracle for himself',
+    binomial: 'Apollo pythonoctonus',
+    species: 'Python-slayer',
+    speciesLatin: 'mythological',
+    hue: 20,
+    weight: 62,
+    lede:
+      'Apollo\'s first recorded act on reaching Delphi was to kill the serpent that lived there. He then established his oracle on the spot and named its priestess after the animal he had just destroyed.',
+    scripture: [
+      'The Homeric Hymn to Apollo is very clear about the sequence. Apollo comes to the spring at Delphi. A great she-serpent guards it. He shoots her with his arrows. She dies, rotting in the sun — and from that rotting, in one folk etymology, comes the name Pytho, and from Pytho comes Python, and from Python comes the title of every priestess who has ever prophesied there: the Pythia.',
+      'Consider what that means. Apollo does not merely defeat the serpent. He builds his entire institution on the corpse, and he names his oracle after her, permanently. Every prophecy delivered at Delphi for over a thousand years was delivered by a woman carrying the dead snake\'s name.',
+      'The Apollo Intensa Emozione — the company was previously Gumpert, and the name change is the reason this entry exists — is a low-volume hypercar with a naturally aspirated 6.3-litre V12 built by Autotecnica Motori, revving past nine thousand, ten cars, carbon everywhere, styled in a manner best described as unrepentant.',
+      'The Ophidiary includes it in Book V because a bestiary that lists predators must list the gods among them. But it wishes to note that Apollo\'s victory is the least sporting in this book. The mongoose fights. The roadrunner works for it. Apollo shot her from a distance with divine arrows and then took her name for his own staff.',
+      'That is not predation. That is acquisition.',
+    ],
+    verse: [
+      'He killed her at the spring',
+      'and left her in the sun',
+      'and built his temple on the smell of it,',
+      'and every woman who spoke for him after that',
+      'was called by her name.',
+    ],
+    field: [
+      ['Engine', '6.3-litre naturally aspirated V12'],
+      ['Redline', 'Beyond 9,000 rpm'],
+      ['Built', 'Ten'],
+      ['Former marque name', 'Gumpert'],
+      ['Mythological act', 'Slew the Python at Delphi; appropriated the oracle'],
+    ],
+    venom: { bite: 90, patience: 66, mystique: 84, iridescence: 78, candour: 44 },
+    provenance: [
+      {
+        claim: 'In Greek myth Apollo killed the serpent Python at Delphi and his oracular priestess was titled the Pythia.',
+        truth: 'documented',
+      },
+      {
+        claim: 'The Apollo Intensa Emozione uses a naturally aspirated 6.3-litre V12 and was built in a run of ten.',
+        truth: 'documented',
+      },
+      { claim: 'Apollo Automobil was formerly known as Gumpert.', truth: 'documented' },
+    ],
+    faq: [
+      {
+        q: 'Is the Apollo hypercar named after a snake?',
+        a: 'The reverse — it is named after the god who killed one. Apollo\'s defining early act in Greek myth was slaying the serpent Python at Delphi, after which his oracle\'s priestess carried the serpent\'s name as her title.',
+      },
+    ],
+    related: ['de-tomaso-mangusta', 'vacancy-python', 'aspark-owl'],
+    tags: ['adversary', 'german', 'italian', 'v12', 'coupe', 'mythic', 'ultra-rare'],
+  },
+
+  {
+    slug: 'aspark-owl',
+    chapter: 'adversaries',
+    marque: 'Aspark',
+    model: 'Owl',
+    name: 'Aspark Owl',
+    years: '2020–',
+    nation: 'Japan',
+    epithet: 'Silent, nocturnal, and arrives without a sound — which is precisely the problem for a snake',
+    binomial: 'Strix electrica',
+    species: 'Owl',
+    speciesLatin: 'Strigiformes',
+    hue: 230,
+    weight: 52,
+    lede:
+      'An electric hypercar from Osaka with four motors, roughly two thousand horsepower, and a name belonging to the one predator a snake genuinely cannot hear coming.',
+    scripture: [
+      'Snakes have no external ears. They detect ground-borne vibration through the jaw and the body, and they are extremely good at it — a snake knows about your footsteps before you have finished making them.',
+      'Owls do not make footsteps.',
+      'The leading edge of an owl\'s primary feathers is fringed with a comb-like serration that breaks up the turbulence which, in every other bird, produces the audible whoosh of a wingbeat. The trailing edge is soft. The surface is velvety. The result is a large predator that can approach through open air in near-total acoustic silence, and there is no defence against it available to an animal that listens through the floor.',
+      'Aspark, an Osaka engineering consultancy, chose that name for an electric hypercar, and the choice is better than the company probably intended. An electric car is silent in exactly the way an owl is silent: not quiet, but specifically engineered to remove the frequencies that would give it away. Every other entry in this book announces itself. The Owl is the only one that does not.',
+      'It has four motors, one per wheel, a claimed output near two thousand horsepower, a carbon monocoque, and a ground clearance figure so low it needs hydraulics to leave a driveway. Production is measured in dozens.',
+      'The Ophidiary files it in Book V and adds a note of genuine unease. The Cobra and the Viper are honest animals; they threaten before they act. The Owl removes the threat display entirely, keeps the outcome, and does it in the dark.',
+    ],
+    verse: [
+      'The snake hears through the floor.',
+      'The owl does not use the floor.',
+      'That is the entire conversation',
+      'and it is over',
+      'before either party has spoken.',
+    ],
+    field: [
+      ['Motors', 'Four, one per wheel'],
+      ['Power', 'Approximately 1,985 hp'],
+      ['Structure', 'Carbon monocoque'],
+      ['Origin', 'Aspark, Osaka'],
+      ['Acoustic signature', 'Deliberately absent'],
+    ],
+    venom: { bite: 96, patience: 82, mystique: 68, iridescence: 60, candour: 30 },
+    provenance: [
+      {
+        claim: 'Owl flight is quietened by serrations on the leading edge of the primary feathers and a soft trailing edge.',
+        truth: 'documented',
+      },
+      { claim: 'Snakes lack external ears and detect vibration primarily through the jaw and body.', truth: 'documented' },
+      { claim: 'The Aspark Owl is a four-motor electric hypercar with roughly 1,985 hp.', truth: 'documented' },
+      { claim: 'Owls prey on snakes.', truth: 'documented', note: 'Opportunistically, and with the odds heavily in their favour.' },
+    ],
+    faq: [
+      {
+        q: 'Do owls eat snakes?',
+        a: 'Yes, opportunistically. Several owl species take snakes, and their near-silent flight — produced by specialised feather structure — makes them particularly difficult for a snake to detect, since snakes sense approach mainly through ground vibration.',
+      },
+    ],
+    related: ['plymouth-road-runner', 'apollo-intensa-emozione', 'hennessey-venom-f5'],
+    tags: ['adversary', 'japanese', 'electric', 'coupe', 'ultra-rare'],
+  },
+];
